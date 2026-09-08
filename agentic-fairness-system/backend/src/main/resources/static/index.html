@@ -6,25 +6,26 @@
   <title>Fairness Console</title>
   <style>
     :root {
-      --bg: #f4f3f0;
-      --panel: #fbfaf7;
-      --panel-soft: #f2f2ed;
-      --panel-strong: #eef2ee;
-      --line: #dfe3dc;
-      --line-strong: #cbd4cb;
-      --ink: #171d1b;
-      --muted: #606d68;
-      --muted-strong: #3f4945;
-      --accent: #0d5f58;
-      --accent-soft: rgba(13, 95, 88, 0.08);
-      --warning: #b76b1a;
-      --warning-soft: rgba(183, 107, 26, 0.08);
-      --danger: #a13f2d;
-      --danger-soft: rgba(161, 63, 45, 0.08);
-      --success: #1d6f52;
-      --success-soft: rgba(29, 111, 82, 0.08);
-      --shadow: 0 10px 22px rgba(16, 24, 40, 0.04);
-      --radius: 18px;
+      --bg: #f7f8fc;
+      --panel: #ffffff;
+      --panel-soft: #f4f5fb;
+      --panel-strong: #eceafd;
+      --line: #e5e7f0;
+      --line-strong: #cfd3e2;
+      --ink: #17213a;
+      --muted: #737b91;
+      --muted-strong: #3e4862;
+      --accent: #635bda;
+      --accent-dark: #4d46b8;
+      --accent-soft: rgba(99, 91, 218, 0.1);
+      --warning: #b36a11;
+      --warning-soft: rgba(179, 106, 17, 0.1);
+      --danger: #c44755;
+      --danger-soft: rgba(196, 71, 85, 0.1);
+      --success: #23835b;
+      --success-soft: rgba(35, 131, 91, 0.1);
+      --shadow: 0 14px 34px rgba(28, 38, 76, 0.06);
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; }
@@ -32,7 +33,7 @@
     html, body {
       margin: 0;
       min-height: 100%;
-      background: var(--bg);
+      background: radial-gradient(circle at 78% -10%, rgba(99, 91, 218, 0.08), transparent 28%), var(--bg);
       color: var(--ink);
       font-family: Inter, "Segoe UI", sans-serif;
     }
@@ -54,11 +55,11 @@
     .sidebar {
       width: 260px;
       border-right: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.2);
+      background: #ffffff;
       padding: 24px 18px 28px;
       display: flex;
       flex-direction: column;
-      gap: 26px;
+      gap: 30px;
     }
 
     .brand {
@@ -78,8 +79,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #111827;
-      color: #f8fafc;
+      background: linear-gradient(135deg, #6f67e8, #5149b9);
+      color: #ffffff;
       font-size: 0.74rem;
       letter-spacing: 0.04em;
     }
@@ -120,14 +121,14 @@
     }
 
     .nav-item:hover {
-      background: rgba(17, 24, 39, 0.02);
+      background: var(--accent-soft);
       color: var(--ink);
     }
 
     .nav-item.active {
       background: rgba(17, 24, 39, 0.04);
-      border-left-color: var(--ink);
-      color: var(--ink);
+      border-left-color: var(--accent);
+      color: var(--accent-dark);
     }
 
     .main-panel {
@@ -135,7 +136,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      background: rgba(255,255,255,0.1);
+      background: transparent;
     }
 
     .topbar {
@@ -145,7 +146,7 @@
       gap: 20px;
       border-bottom: 1px solid var(--line);
       padding: 20px 30px;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.88);
     }
 
     .topbar .crumb {
@@ -177,7 +178,7 @@
       height: 36px;
       border: 1px solid var(--line);
       border-radius: 10px;
-      background: var(--panel);
+      background: #ffffff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -223,7 +224,7 @@
     .section-surface {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.85);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -234,6 +235,74 @@
       justify-content: space-between;
       gap: 20px;
       padding: 20px 22px 0;
+    }
+
+    .hero-surface {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #dcdafa;
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      color: #ffffff;
+      background: linear-gradient(115deg, #312d73 0%, #5f57ce 60%, #8179ed 100%);
+      box-shadow: 0 18px 38px rgba(73, 65, 179, 0.2);
+    }
+
+    .hero-surface::after {
+      position: absolute;
+      content: "";
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: -120px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 30px rgba(255,255,255,0.04), 0 0 0 60px rgba(255,255,255,0.03);
+    }
+
+    .hero-surface .eyebrow,
+    .hero-surface .meta {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-surface h1 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: -0.055em;
+      line-height: 1.04;
+    }
+
+    .hero-surface p:not(.eyebrow) {
+      max-width: 560px;
+      margin: 12px 0 0;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .hero-button {
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.13);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hero-button.primary {
+      border-color: #ffffff;
+      background: #ffffff;
+      color: var(--accent-dark);
     }
 
     .eyebrow {
@@ -427,7 +496,7 @@
       font-weight: 700;
       padding: 16px 22px;
       border-bottom: 1px solid var(--line);
-      background: rgba(17, 24, 39, 0.01);
+      background: var(--panel-soft);
     }
 
     tbody td {
@@ -502,7 +571,8 @@
       font-weight: 700;
     }
 
-    .field input {
+    .field input,
+    .field select {
       border: 1px solid var(--line-strong);
       border-radius: 10px;
       background: #fff;
@@ -511,19 +581,159 @@
       outline: none;
     }
 
-    .field input:focus {
+    .field select {
+      min-height: 43px;
+    }
+
+    .field input:focus,
+    .field select:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(13, 95, 88, 0.08);
+      box-shadow: 0 0 0 3px rgba(99, 91, 218, 0.1);
+    }
+
+    .wizard {
+      padding: 20px 22px 22px;
+    }
+
+    .wizard-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .wizard-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .wizard-step span {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--panel-soft);
+      color: var(--muted-strong);
+      font-size: 0.72rem;
+    }
+
+    .wizard-step.active {
+      border-bottom-color: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .wizard-step.active span {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .wizard-panel {
+      display: none;
+    }
+
+    .wizard-panel.active {
+      display: block;
+    }
+
+    .wizard-panel h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .wizard-panel > p {
+      margin: 7px 0 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .wizard-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .wizard-fields .wide {
+      grid-column: 1 / -1;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .choice-card {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .choice-card:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 0 2px rgba(99, 91, 218, 0.08);
+    }
+
+    .choice-card input {
+      accent-color: var(--accent);
+    }
+
+    .choice-card strong {
+      font-size: 0.9rem;
+    }
+
+    .choice-card small {
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .wizard-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--muted-strong);
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .primary-button {
       border: 0;
       border-radius: 10px;
-      background: var(--ink);
+      background: var(--accent);
       color: #f8fafc;
       padding: 11px 16px;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    .primary-button:hover,
+    .hero-button.primary:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
     }
 
     .form-message {
@@ -591,6 +801,24 @@
       }
       .metric-strip { border-right: 0; border-bottom: 1px solid var(--line); }
       .metric-strip:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 620px) {
+      .sidebar { padding: 16px; }
+      .sidebar-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .nav-group { gap: 4px; }
+      .nav-label { display: none; }
+      .nav-item { padding: 10px; }
+      .topbar { padding: 16px; }
+      .topbar-actions .icon-button { display: none; }
+      .user-pill span { display: none; }
+      .page { padding: 16px; }
+      .hero-surface { padding: 22px; }
+      .section-header { padding-left: 18px; padding-right: 18px; }
+      .panel-body, .form-surface { padding-left: 18px; padding-right: 18px; }
+      thead th, tbody td { padding-left: 14px; padding-right: 14px; }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 620px; }
     }
   </style>
 </head>
@@ -664,6 +892,16 @@
 
     function dashboardPage() {
       return `
+        <section class="hero-surface">
+          <p class="eyebrow">Good afternoon, Alex</p>
+          <h1>Make every model decision more trustworthy.</h1>
+          <p>Track fairness across your AI portfolio, understand emerging risks, and keep governance work moving from review to resolution.</p>
+          <div class="hero-actions">
+            <button id="hero-new-audit" class="hero-button primary" type="button">Start an audit</button>
+            <button class="hero-button" type="button">View monitoring</button>
+          </div>
+        </section>
+
         <section class="section-surface">
           <div class="section-header">
             <div>
@@ -799,23 +1037,82 @@
       `;
     }
 
+    const auditSetupOptions = {
+      datasets: [
+        { value: 'credit_decisions.csv', label: 'Credit decisions · CSV', detail: '48,200 rows · 12 columns' },
+        { value: 'candidate_outcomes.csv', label: 'Candidate outcomes · CSV', detail: '18,640 rows · 19 columns' },
+        { value: 'support_triage.parquet', label: 'Support triage · Parquet', detail: '92,100 rows · 24 columns' }
+      ],
+      models: [
+        { value: 'credit-exp-8', label: 'Credit-Exp-8', detail: 'Binary classification · v8.2.0' },
+        { value: 'talent-lm-v3', label: 'Talent-LM-v3', detail: 'Ranking model · v3.4.12' },
+        { value: 'careflow-2', label: 'CareFlow-2', detail: 'Multiclass classification · v2.1.8' }
+      ]
+    };
+
+    const workflowService = {
+      async list() {
+        const response = await fetch('/api/workflows');
+        if (!response.ok) throw new Error('Unable to load workflows');
+        return response.json();
+      },
+      async create(payload) {
+        const response = await fetch('/api/workflows', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('Unable to create workflow');
+        return response.json();
+      }
+    };
+
+    function optionMarkup(options) {
+      return options.map((option) => `
+        <option value="${option.value}">${option.label} — ${option.detail}</option>
+      `).join('');
+    }
+
     function evaluationPage() {
       return `
         <section class="section-surface">
           <div class="section-header">
             <div>
               <p class="eyebrow">Evaluate</p>
-              <h2>Start a fairness check</h2>
+              <h2>Create an audit</h2>
             </div>
           </div>
 
-          <div class="form-surface">
-            <form id="workflow-form">
-              <div class="form-grid">
-                <div class="field">
-                  <label for="workflow-name">Workflow name</label>
+          <form id="workflow-form" class="wizard">
+            <div class="wizard-steps" aria-label="Audit setup progress">
+              <div class="wizard-step active" data-step-indicator="1"><span>1</span>Scope</div>
+              <div class="wizard-step" data-step-indicator="2"><span>2</span>Fairness criteria</div>
+              <div class="wizard-step" data-step-indicator="3"><span>3</span>Review</div>
+            </div>
+
+            <div class="wizard-panel active" data-step="1">
+              <h3>Define the audit scope</h3>
+              <p>Tell us what you want to evaluate. These selections are mock-connected today and ready for a future dataset API.</p>
+              <div class="wizard-fields">
+                <div class="field wide">
+                  <label for="workflow-name">Audit name</label>
                   <input id="workflow-name" name="name" type="text" placeholder="Hiring model review" required>
                 </div>
+                <div class="field">
+                  <label for="workflow-dataset">Dataset</label>
+                  <select id="workflow-dataset" name="dataset">${optionMarkup(auditSetupOptions.datasets)}</select>
+                </div>
+                <div class="field">
+                  <label for="workflow-model">Model</label>
+                  <select id="workflow-model" name="model">${optionMarkup(auditSetupOptions.models)}</select>
+                </div>
+              </div>
+            </div>
+
+            <div class="wizard-panel" data-step="2">
+              <h3>Choose fairness criteria</h3>
+              <p>Select the dimensions and policy checks that matter for this audit.</p>
+              <div class="wizard-fields">
                 <div class="field">
                   <label for="workflow-attributes">Protected attributes</label>
                   <input id="workflow-attributes" name="protectedAttributes" type="text" placeholder="gender, race" required>
@@ -824,11 +1121,34 @@
                   <label for="workflow-target">Target column</label>
                   <input id="workflow-target" name="targetColumn" type="text" placeholder="prediction" required>
                 </div>
-                <button class="primary-button" type="submit">Create workflow</button>
+                <div class="field wide">
+                  <label>Metrics to include</label>
+                  <div class="choice-grid">
+                    <label class="choice-card"><input type="checkbox" name="metrics" value="demographic-parity" checked><strong>Demographic parity</strong><small>Compare positive outcome rates across groups.</small></label>
+                    <label class="choice-card"><input type="checkbox" name="metrics" value="equal-opportunity" checked><strong>Equal opportunity</strong><small>Compare true positive rates across groups.</small></label>
+                    <label class="choice-card"><input type="checkbox" name="metrics" value="calibration"><strong>Calibration</strong><small>Check whether confidence means the same thing.</small></label>
+                  </div>
+                </div>
               </div>
-              <p id="form-message" class="form-message" aria-live="polite"></p>
-            </form>
-          </div>
+            </div>
+
+            <div class="wizard-panel" data-step="3">
+              <h3>Review and create</h3>
+              <p>Confirm the audit inputs before creating the workflow in your workspace.</p>
+              <div class="report-grid">
+                <div class="report-box"><span>Audit</span><strong id="review-name">—</strong></div>
+                <div class="report-box"><span>Model</span><strong id="review-model">—</strong></div>
+                <div class="report-box"><span>Attributes</span><strong id="review-attributes">—</strong></div>
+              </div>
+            </div>
+
+            <div class="wizard-actions">
+              <button id="wizard-back" class="secondary-button" type="button" hidden>Back</button>
+              <button id="wizard-next" class="primary-button" type="button">Continue</button>
+              <button id="wizard-submit" class="primary-button" type="submit" hidden>Create audit</button>
+            </div>
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+          </form>
         </section>
 
         <section class="section-surface">
@@ -1007,6 +1327,11 @@
         item.classList.toggle('active', item.dataset.page === pageKey);
       });
 
+      const newAuditButton = document.getElementById('hero-new-audit');
+      if (newAuditButton) {
+        newAuditButton.addEventListener('click', () => renderPage('evaluations'));
+      }
+
       if (pageKey === 'evaluations') {
         bindWorkflowForm();
         loadWorkflows();
@@ -1016,6 +1341,43 @@
     function bindWorkflowForm() {
       const form = document.getElementById('workflow-form');
       if (!form) return;
+
+      const panels = [...form.querySelectorAll('.wizard-panel')];
+      const indicators = [...form.querySelectorAll('.wizard-step')];
+      const backButton = document.getElementById('wizard-back');
+      const nextButton = document.getElementById('wizard-next');
+      const submitButton = document.getElementById('wizard-submit');
+      const message = document.getElementById('form-message');
+      let currentStep = 1;
+
+      function showStep(step) {
+        currentStep = step;
+        panels.forEach((panel) => panel.classList.toggle('active', Number(panel.dataset.step) === step));
+        indicators.forEach((indicator) => indicator.classList.toggle('active', Number(indicator.dataset.stepIndicator) <= step));
+        backButton.hidden = step === 1;
+        nextButton.hidden = step === 3;
+        submitButton.hidden = step !== 3;
+
+        if (step === 3) {
+          document.getElementById('review-name').textContent = document.getElementById('workflow-name').value.trim() || '—';
+          document.getElementById('review-model').textContent = document.getElementById('workflow-model').selectedOptions[0].textContent.split(' — ')[0];
+          document.getElementById('review-attributes').textContent = document.getElementById('workflow-attributes').value.trim() || '—';
+        }
+      }
+
+      function validateStep() {
+        const fields = [...panels[currentStep - 1].querySelectorAll('input[required], select[required]')];
+        const valid = fields.every((field) => field.reportValidity());
+        if (!valid) return false;
+        message.classList.remove('visible');
+        return true;
+      }
+
+      nextButton.addEventListener('click', () => {
+        if (validateStep()) showStep(Math.min(currentStep + 1, 3));
+      });
+
+      backButton.addEventListener('click', () => showStep(Math.max(currentStep - 1, 1)));
 
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -1029,7 +1391,6 @@
           targetColumn: formData.get('targetColumn')?.trim() || ''
         };
 
-        const message = document.getElementById('form-message');
         if (!payload.name || !payload.protectedAttributes.length || !payload.targetColumn) {
           message.classList.add('visible');
           message.textContent = 'Please complete all fields before creating a workflow.';
@@ -1037,19 +1398,11 @@
         }
 
         try {
-          const response = await fetch('/api/workflows', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          if (!response.ok) {
-            throw new Error('Unable to create workflow');
-          }
-
+          await workflowService.create(payload);
           message.classList.add('visible');
-          message.textContent = 'Workflow created successfully.';
+          message.textContent = 'Audit created successfully and added to your evaluation catalog.';
           form.reset();
+          showStep(1);
           await loadWorkflows();
         } catch (error) {
           message.classList.add('visible');
@@ -1063,9 +1416,7 @@
       if (!tableWrap) return;
 
       try {
-        const response = await fetch('/api/workflows');
-        if (!response.ok) throw new Error('Request failed');
-        const workflows = await response.json();
+        const workflows = await workflowService.list();
 
         if (!workflows.length) {
           tableWrap.innerHTML = '<div class="empty-state">No evaluations yet. Create the first workflow to get started.</div>';
